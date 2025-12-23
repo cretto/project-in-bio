@@ -1,24 +1,44 @@
-export default function ProjectCard() {
+"use client";
+
+import { formatterUrl } from "@/app/lib/utils";
+import type { ProjectData } from "@/app/server/get-profile-data";
+import Link from "next/link";
+
+export default function ProjectCard({
+  project,
+  isOwner,
+  img,
+}: {
+  project: ProjectData;
+  isOwner: boolean;
+  img: string;
+}) {
+  const formattedUrl = formatterUrl(project.projectUrl);
+
+  function handleClinkLink() {}
+
   return (
-    <div className="w-85 h-33 flex gap-5 bg-background-secondary p-3 rounded-[20px] border border-transparent hover:border-border-secondary">
-      <div className="size-24 rounded-md overflow-hidden shrink-0">
-        <img
-          src="/project1.jpg"
-          alt="Projeto"
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="flex flex-col gap-2">
-        <span className="uppercase text-xs font-bold text-accent-green">
-          10 cliques
-        </span>
-        <div className="flex flex-col">
-          <span className="text-white font-bold text-xl">Projeto 1</span>
-          <span className="text-content-body text-sm ">
-            Descrição super datalhada do que o projeto faz
-          </span>
+    <Link href={formattedUrl} target="_blank" onClick={handleClinkLink}>
+      <div className="w-85 h-33 flex gap-5 bg-background-secondary p-3 rounded-[20px] border border-transparent hover:border-border-secondary">
+        <div className="size-24 rounded-md overflow-hidden shrink-0">
+          <img src={img} alt="Projeto" className="w-full h-full object-cover" />
+        </div>
+        <div className="flex flex-col gap-2">
+          {isOwner && (
+            <span className="uppercase text-xs font-bold text-accent-green">
+              {project.totalVisits || 0} cliques
+            </span>
+          )}
+          <div className="flex flex-col">
+            <span className="text-white font-bold text-xl">
+              {project.projectName}
+            </span>
+            <span className="text-content-body text-sm ">
+              {project.projectDescription}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
