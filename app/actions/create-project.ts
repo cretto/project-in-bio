@@ -12,8 +12,6 @@ export async function createProject(formData: FormData) {
     return;
   }
 
-  console.log(formData);
-
   const profileId = formData.get("profileId") as string;
   const projectName = formData.get("projectName") as string;
   const projectDescription = formData.get("projectDescription") as string;
@@ -36,6 +34,7 @@ export async function createProject(formData: FormData) {
       .collection("projects")
       .doc(generatedId)
       .set({
+        id: generatedId,
         userId: session.user?.id,
         projectName,
         projectDescription,

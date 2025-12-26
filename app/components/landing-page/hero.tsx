@@ -1,8 +1,7 @@
 import ProjectCard from "../commons/project-card";
 import TotalVisits from "../commons/total-visits";
 import UserCard from "../commons/user-card/user-card";
-import Button from "../ui/button";
-import TextInput from "../ui/text-input";
+import CreateNow from "../ui/create-now";
 
 export default function Hero() {
   return (
@@ -16,23 +15,27 @@ export default function Hero() {
           <br />
           Acompanhe o engajamento com Analytics de cliques
         </h2>
-        <div className="flex items-center gap-2 w-full mt-[10vh]">
-          <span className="text-white text-xl">projectinbio.com</span>
-          <TextInput placeholder="Seu link" />
-          <Button>Criar agora</Button>
-        </div>
+        <CreateNow />
       </div>
       <div className="w-full flex items-center justify-center bg-[radial-gradient(circle_at_50%_50%,#4B2DBB,transparent_55%)]">
         <div className="relative">
           <UserCard />
           <div className="absolute -bottom-[7%] -right-[45%]">
-            <TotalVisits />
+            <TotalVisits totalVisits={12334} />
           </div>
           <div className="absolute top-[20%] -left-[45%] -z-10">
-            <ProjectCard />
+            <ProjectCard
+              name="Projeto 1"
+              description="Descrição do projeto 1"
+              img="project1.jpg"
+            />
           </div>
           <div className="absolute -top-[5%] -left-[55%] -z-10">
-            <ProjectCard />
+            <ProjectCard
+              name="Projeto 2"
+              description="Descrição do projeto 2"
+              img="project2.jpg"
+            />
           </div>
         </div>
       </div>

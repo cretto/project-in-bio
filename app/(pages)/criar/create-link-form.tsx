@@ -5,13 +5,17 @@ import { verifyLink } from "@/app/actions/verify-link";
 import Button from "@/app/components/ui/button";
 import TextInput from "@/app/components/ui/text-input";
 import { sanitezeLink } from "@/app/lib/utils";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState, type ChangeEvent, type FormEvent } from "react";
 
 export function CreateLinkForm() {
   const router = useRouter();
 
-  const [link, setLink] = useState("");
+  const searchParams = useSearchParams();
+
+  const [link, setLink] = useState(
+    sanitezeLink(searchParams.get("link") || "")
+  );
   const [error, setError] = useState<string | null>(null);
 
   function handleLinkChange(e: ChangeEvent<HTMLInputElement>) {
