@@ -11,6 +11,12 @@ import NewProject from "./new-project";
 import { getDownloadUrlFromPath } from "@/app/lib/firebase";
 import UserCard from "@/app/components/commons/user-card/user-card";
 import { increaseProfileVisits } from "@/app/actions/increase-profile-visits";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ProjectInBio - Perfil",
+  description: "ProjectInBio - ",
+};
 
 export default async function ProfilePage({
   params,

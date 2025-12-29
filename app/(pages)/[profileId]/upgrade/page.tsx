@@ -1,5 +1,11 @@
 import Header from "@/app/components/landing-page/header";
 import PlanButtons from "./plan-buttons";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ProjectInBio - Upgrade",
+  description: "ProjectInBio - Upgrade",
+};
 
 export default function UpgradePage() {
   return (
